@@ -136,7 +136,7 @@ export default {
 					? `${process.env.VUE_APP_API_URL}/images/${meetup.imageId}`
 					: undefined,
 				date: new Date(meetup.date),
-				localDate: new Date(meetup.date).toLocaleString(navigator.language, {
+				localeDate: new Date(meetup.date).toLocaleString(navigator.language, {
 					year: 'numeric',
 					month: 'long',
 					day: 'numeric'

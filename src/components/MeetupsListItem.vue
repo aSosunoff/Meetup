@@ -1,5 +1,8 @@
 <template>
-	<a :href="`/meetups/${meetup.id}`" class="meetups-list__item">
+	<router-link
+		:to="{ name: 'meetup', params: { meetupId: meetup.id } }"
+		class="meetups-list__item"
+	>
 		<div class="meetups-list__col">
 			<div
 				class="meetups-list__cover"
@@ -18,29 +21,37 @@
 				<span v-if="meetup.organizing" class="meetups-list__badge">Организую</span>
 				<ul class="info-list">
 					<li>
+						<app-icon icon="user" class="info-list__icon" />
 						{{ meetup.organizer }}
 					</li>
 					<li>
+						<app-icon icon="map" class="info-list__icon" />
 						{{ meetup.place }}
 					</li>
 					<li>
-						<time :datetime="meetup.date">{{ meetup.localDate }}</time>
+						<app-icon icon="cal-lg" class="info-list__icon" />
+						<time :datetime="meetup.date">{{ meetup.localeDate }}</time>
 					</li>
 				</ul>
 			</div>
 		</div>
-	</a>
+	</router-link>
 </template>
 
 <script>
+import AppIcon from '@/components/AppIcon.vue';
+
 export default {
 	name: 'MeetupsListItem',
+
 	props: {
 		meetup: {
 			required: true,
 			type: Object
 		}
-	}
+	},
+
+	components: { AppIcon }
 };
 </script>
 
@@ -57,10 +68,6 @@ export default {
 	flex-direction: row;
 	background-color: var(--white);
 	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
-}
-
-.meetups-list__item:hover {
-	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.24);
 }
 
 .meetups-list__item > .meetups-list__col {
