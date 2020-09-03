@@ -19,27 +19,15 @@
 					>Участвую</span
 				>
 				<span v-if="meetup.organizing" class="meetups-list__badge">Организую</span>
-				<ul class="info-list">
-					<li>
-						<app-icon icon="user" class="info-list__icon" />
-						{{ meetup.organizer }}
-					</li>
-					<li>
-						<app-icon icon="map" class="info-list__icon" />
-						{{ meetup.place }}
-					</li>
-					<li>
-						<app-icon icon="cal-lg" class="info-list__icon" />
-						<time :datetime="meetup.date">{{ meetup.localeDate }}</time>
-					</li>
-				</ul>
+
+				<MeetupInfo :meetup="meetup" />
 			</div>
 		</div>
 	</router-link>
 </template>
 
 <script>
-import AppIcon from '@/components/AppIcon.vue';
+import MeetupInfo from '@/components/MeetupInfo.vue';
 
 export default {
 	name: 'MeetupsListItem',
@@ -51,7 +39,7 @@ export default {
 		}
 	},
 
-	components: { AppIcon }
+	components: { MeetupInfo }
 };
 </script>
 
@@ -140,29 +128,5 @@ export default {
 	.meetups-list__description {
 		padding: 40px 24px 32px;
 	}
-}
-
-.info-list {
-	margin: 0;
-	padding: 0;
-}
-
-.info-list li {
-	list-style-type: none;
-	position: relative;
-	padding-left: 36px;
-	font-size: 18px;
-	line-height: 28px;
-	margin: 0 0 8px;
-}
-
-.info-list li:last-child {
-	margin: 0;
-}
-
-.info-list__icon {
-	position: absolute;
-	left: 0;
-	top: 0;
 }
 </style>

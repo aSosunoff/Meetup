@@ -135,12 +135,7 @@ export default {
 				cover: meetup.imageId
 					? `${process.env.VUE_APP_API_URL}/images/${meetup.imageId}`
 					: undefined,
-				date: new Date(meetup.date),
-				localeDate: new Date(meetup.date).toLocaleString(navigator.language, {
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric'
-				})
+				date: new Date(meetup.date)
 			}));
 
 			if (this.options.date === 'past') {

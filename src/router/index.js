@@ -1,42 +1,83 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import LoginPage from '../views/LoginPage.vue';
-import FormPage from '../views/FormPage.vue';
-import MeetupsPage from '../views/MeetupsPage.vue';
-import NotFoundPage from '../views/NotFoundPage.vue';
 
 Vue.use(VueRouter);
+
+export function scrollBehavior(to, from, savedPosition) {
+	if (to.meta && to.meta.saveScrollPosition && from.meta && from.meta.saveScrollPosition) {
+		return false;
+	}
+
+	if (savedPosition) {
+		return savedPosition;
+	}
+
+	if (to.hash) {
+		return {
+			selector: to.hash,
+			offset: { x: 0, y: 10 }
+		};
+	}
+
+	return { x: 0, y: 0 };
+}
 
 const routes = [
 	{
 		path: '/',
 		name: 'main',
-		component: MeetupsPage
+		component: () => import('../views/MeetupsPage.vue')
 	},
 	{
 		path: '/meetups',
 		name: 'meetups',
-		component: MeetupsPage
+		component: () => import('../views/MeetupsPage.vue')
+	},
+	{
+		path: '/meetups/:meetupId(\\d+)',
+		name: 'meetup',
+		redirect: to => ({ name: 'meetup-description', params: to.params }),
+		meta: {
+			showReturnToMeetups: true,
+			saveScrollPosition: true
+		},
+		component: () => import('@/views/MeetupPage'),
+		children: [
+			{
+				path: 'description',
+				// alias: 'description',
+				name: 'meetup-description',
+				props: true,
+				component: () => import('@/views/MeetupDescriptionPage')
+			},
+			{
+				path: 'agenda',
+				name: 'meetup-agenda',
+				props: true,
+				component: () => import('@/views/MeetupAgendaPage')
+			}
+		]
 	},
 	{
 		path: '/login',
 		name: 'login',
-		component: LoginPage
+		component: () => import('../views/LoginPage.vue')
 	},
 	{
 		path: '/form',
 		name: 'form',
-		component: FormPage
+		component: () => import('../views/FormPage.vue')
 	},
 	{
 		path: '*',
-		component: NotFoundPage
+		component: () => import('../views/NotFoundPage.vue')
 	}
 ];
 
 const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
+	scrollBehavior,
 	routes
 });
 

@@ -8,19 +8,14 @@
 			</h1>
 		</div>
 		<nav>
+			<router-link v-if="showReturnToMeetups" :to="{ name: 'meetups' }">
+				&larr; Вернуться к списку
+			</router-link>
 			<router-link :to="{ name: 'main' }">Главная</router-link>
 			<router-link :to="{ name: 'meetups' }">Митапы</router-link>
 			<router-link :to="{ name: 'form' }">Создать митап</router-link>
 			<router-link :to="{ name: 'login' }">Вход</router-link>
 		</nav>
-		<!-- <nav>
-			<a href="login.html">Вход</a>
-			<a href="register.html">Регистрация</a>
-			<a href="meetup-form.html">Мои митапы</a>
-			<a href="meetup-form.html">Организуемые митапы</a>
-			<a href="meetup-form.html">Создать митап</a>
-			<a href="meetup-form.html">Выйти</a>
-		</nav> -->
 	</header>
 </template>
 
@@ -29,9 +24,17 @@ import logo from '@/assets/logo.svg';
 
 export default {
 	name: 'AppHeader',
+
 	data: () => ({
 		logo
 	}),
+
+	computed: {
+		showReturnToMeetups() {
+			return this.$route.matched.some(route => route.meta.showReturnToMeetups);
+		}
+	},
+
 	conponents: { logo }
 };
 </script>
