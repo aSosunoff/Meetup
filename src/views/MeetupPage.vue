@@ -11,6 +11,12 @@
 				</div>
 				<div class="meetup__aside">
 					<MeetupInfo :meetup="meetup" />
+					<div class="meetup__aside-buttons">
+						<!-- <router-link :to="{ name: 'main' }">Главная</router-link> -->
+						<PrimaryButton tag="a">Редактировать</PrimaryButton>
+						<SecondaryButton>Отменить участие</SecondaryButton>
+						<DangerButton>Удалить</DangerButton>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -21,6 +27,9 @@
 import MeetupCover from '@/components/MeetupCover.vue';
 import MeetupInfo from '@/components/MeetupInfo.vue';
 import ContentTabs from '@/components/ContentTabs.vue';
+import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
+import DangerButton from '@/components/buttons/DangerButton.vue';
+import SecondaryButton from '@/components/buttons/SecondaryButton.vue';
 import fetchJson from '@/utils/fetch-json';
 
 export default {
@@ -74,7 +83,10 @@ export default {
 	components: {
 		MeetupCover,
 		MeetupInfo,
-		ContentTabs
+		ContentTabs,
+		DangerButton,
+		PrimaryButton,
+		SecondaryButton
 	}
 };
 </script>

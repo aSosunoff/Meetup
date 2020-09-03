@@ -1,4 +1,4 @@
-.button {
+/* .button {
     display: inline-block;
     padding: 10px 24px;
     font-weight: 700;
@@ -18,9 +18,9 @@
 .button.button_block {
    display: block;
     width: 100%;
-}
+} */
 
-.button.button_primary {
+/* .button.button_primary {
     background-color: var(--blue);
     border-color: var(--blue);
     color: var(--white);
@@ -30,9 +30,9 @@
     background-color: var(--blue-light);
     border-color: var(--blue-light);
     color: var(--blue);
-}
+} */
 
-.button.button_secondary {
+/* .button.button_secondary {
     background-color: var(--white);
     border-color: var(--blue);
     color: var(--blue);
@@ -40,9 +40,9 @@
 
 .button.button_secondary:hover {
     border-color: var(--blue-light);
-}
+} */
 
-.button.button_danger {
+/* .button.button_danger {
     background-color: var(--white);
     border-color: var(--red);
     color: var(--red);
@@ -50,4 +50,4 @@
 
 .button.button_danger:hover {
     border-color: var(--red-light);
-}
+} */
