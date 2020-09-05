@@ -4,8 +4,8 @@
 			<div class="filters-panel__col">
 				<form-check
 					:options="dateFilterOptions"
-					:selected="options.date"
-					@change="options = { ...options, date: $event }"
+					:selected="date"
+					@change="$emit('update:date', $event)"
 				></form-check>
 			</div>
 
@@ -18,38 +18,25 @@
 							class="form-control form-control_rounded form-control_sm"
 							type="text"
 							placeholder="Поиск"
-							:value="options.search"
-							@input="
-								options = {
-									...options,
-									search: $event.target.value
-								}
-							"
+							:value="search"
+							@input="$emit('update:search', $event.target.value)"
 						/>
 					</div>
 				</div>
 				<div class="form-group form-group_inline">
-					<page-tabs
-						:selected="options.view"
-						@update:selected="
-							options = {
-								...options,
-								view: $event
-							}
-						"
-					></page-tabs>
+					<page-tabs :selected="view" @select="$emit('update:view', $event)"></page-tabs>
 				</div>
 			</div>
 		</div>
 
 		<transition v-if="filteredMeetups && filteredMeetups.length" name="fade" mode="out-in">
 			<meetups-list
-				v-if="options.view === '' || options.view === 'list'"
+				v-if="view === '' || view === 'list'"
 				:meetups="filteredMeetups"
 				key="list"
 			></meetups-list>
 			<meetups-calendar
-				v-else-if="options.view === 'calendar'"
+				v-else-if="view === 'calendar'"
 				:meetups="filteredMeetups"
 				key="calendar"
 			></meetups-calendar>
@@ -67,60 +54,26 @@ import AppEmpty from '@/components/AppEmpty.vue';
 import iconSearch from '@/assets/icons/icon-search.svg';
 import fetchJson from '@/utils/fetch-json';
 
-const defaults = {
-	view: 'list',
-	date: 'all',
-	participation: 'all',
-	search: ''
-};
-
 export default {
 	name: 'MeetupsPage',
+
+	props: {
+		view: String,
+		date: String,
+		participation: String,
+		search: String
+	},
 
 	data() {
 		return {
 			iconSearch,
 			meetups: [],
-			options: {
-				view: defaults.view,
-				date: defaults.date,
-				participation: defaults.participation,
-				search: defaults.search
-			},
 			dateFilterOptions: [
 				{ text: 'Все', value: 'all' },
 				{ text: 'Прошедшие', value: 'past' },
 				{ text: 'Ожидаемые', value: 'future' }
 			]
 		};
-	},
-
-	watch: {
-		options: {
-			deep: true,
-			handler(newQuery) {
-				const query = Object.fromEntries(
-					Object.entries(newQuery).filter(([key, value]) => defaults[key] !== value)
-				);
-
-				this.$router.push({ path: '/', query }).catch(err => {
-					if (
-						err.name !== 'NavigationDuplicated' &&
-						!err.message.includes('Avoided redundant navigation to current location:')
-					) {
-						throw err;
-					}
-				});
-			}
-		},
-		'$route.query': {
-			immediate: true,
-			handler(newQuery) {
-				this.options = Object.fromEntries(
-					Object.keys(this.options).map(key => [key, newQuery[key] || defaults[key]])
-				);
-			}
-		}
 	},
 
 	async mounted() {
@@ -138,29 +91,29 @@ export default {
 				date: new Date(meetup.date)
 			}));
 
-			if (this.options.date === 'past') {
+			if (this.date === 'past') {
 				filteredMeetups = filteredMeetups.filter(
 					meetup => new Date(meetup.date) <= new Date()
 				);
-			} else if (this.options.date === 'future') {
+			} else if (this.date === 'future') {
 				filteredMeetups = filteredMeetups.filter(
 					meetup => new Date(meetup.date) > new Date()
 				);
 			}
 
-			if (this.options.participation === 'organizing') {
+			if (this.participation === 'organizing') {
 				filteredMeetups = filteredMeetups.filter(meetup => meetup.organizing);
-			} else if (this.options.participation === 'attending') {
+			} else if (this.participation === 'attending') {
 				filteredMeetups = filteredMeetups.filter(({ attending }) => attending);
 			}
 
-			if (this.options.search) {
+			if (this.search) {
 				const concatMeetupText = ({ title, description, place, organizer }) =>
 					[title, description, place, organizer].join(' ').toLowerCase();
 
 				filteredMeetups = filteredMeetups.filter(meetup => {
 					const concat = concatMeetupText(meetup);
-					return concat.includes(this.options.search.toLowerCase());
+					return concat.includes(this.search.toLowerCase());
 				});
 			}
 

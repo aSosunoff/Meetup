@@ -26,12 +26,12 @@ const routes = [
 	{
 		path: '/',
 		name: 'main',
-		component: () => import('../views/MeetupsPage.vue')
+		component: () => import('../views/PageWithQuery.vue')
 	},
 	{
 		path: '/meetups',
 		name: 'meetups',
-		component: () => import('../views/MeetupsPage.vue')
+		component: () => import('../views/PageWithQuery.vue')
 	},
 	{
 		path: '/meetups/:meetupId(\\d+)',
@@ -45,7 +45,6 @@ const routes = [
 		children: [
 			{
 				path: 'description',
-				// alias: 'description',
 				name: 'meetup-description',
 				props: true,
 				component: () => import('@/views/MeetupDescriptionPage')

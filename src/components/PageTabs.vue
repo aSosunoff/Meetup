@@ -44,13 +44,18 @@
 export default {
 	name: 'PageTabs',
 
+	model: {
+		prop: 'selected',
+		event: 'select'
+	},
+
 	props: {
 		selected: String
 	},
 
 	methods: {
 		select(name) {
-			this.$emit('update:selected', name);
+			this.$emit('select', name);
 		}
 	}
 };
