@@ -15,6 +15,14 @@
 				&larr; Вернуться к списку
 			</router-link>
 
+			<router-link :to="{ name: 'login' }">
+				Вход
+			</router-link>
+
+			<router-link :to="{ name: 'register' }">
+				Регистрация
+			</router-link>
+
 			<router-link :to="{ name: 'meetups', query: { participation: 'attending' } }">
 				Мои митапы
 			</router-link>

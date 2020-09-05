@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import FormLayout from '../components/FormLayout.vue';
+import FormLayout from '@/layout/FormLayout.vue';
 
 export default {
 	name: 'FormPage',

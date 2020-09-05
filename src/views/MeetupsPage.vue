@@ -148,14 +148,6 @@ export default {
 	position: relative;
 }
 
-.input-group .form-control {
-	width: 100%;
-}
-
-.input-group.input-group_icon .form-control {
-	padding-left: 50px;
-}
-
 .input-group.input-group_icon .icon {
 	position: absolute;
 	top: 50%;
@@ -177,31 +169,6 @@ export default {
 
 .form-group.form-group_inline + .form-group.form-group_inline {
 	margin-left: 16px;
-}
-
-.form-control {
-	padding: 12px 16px;
-	height: 52px;
-	border-radius: 8px;
-	border: 2px solid var(--blue-light);
-	font-family: 'Nunito', sans-serif;
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 28px;
-	color: var(--body-color);
-	transition: 0.2s all;
-	background-color: var(--white);
-	outline: none;
-	box-shadow: none;
-}
-
-.form-control::placeholder {
-	font-weight: 400;
-	color: var(--blue-2);
-}
-
-.form-control:focus {
-	border-color: var(--blue);
 }
 
 .filters-panel {
