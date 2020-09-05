@@ -24,6 +24,16 @@ export function scrollBehavior(to, from, savedPosition) {
 
 const routes = [
 	{
+		path: '/login',
+		name: 'login',
+		component: () => import('@/views/LoginPage.vue')
+	},
+	{
+		path: '/register',
+		name: 'register',
+		component: () => import('@/views/RegisterPage.vue')
+	},
+	{
 		path: '/',
 		name: 'main',
 		component: () => import('@/views/PageWithQuery.vue')
@@ -56,16 +66,6 @@ const routes = [
 				component: () => import('@/views/MeetupAgendaPage')
 			}
 		]
-	},
-	{
-		path: '/login',
-		name: 'login',
-		component: () => import('@/views/LoginPage.vue')
-	},
-	{
-		path: '/register',
-		name: 'register',
-		component: () => import('@/views/RegisterPage.vue')
 	},
 	{
 		path: '/form',
