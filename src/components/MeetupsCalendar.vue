@@ -1,4 +1,5 @@
 <template>
+	<!-- eslint-disable max-len -->
 	<div class="rangepicker">
 		<div class="rangepicker__calendar">
 			<div class="rangepicker__month-indicator">
@@ -6,7 +7,7 @@
 					<button
 						class="rangepicker__selector-control-left"
 						:style="{
-							background: `url(${iconPillActive}) left center no-repeat`
+							background: `url(${require('@/assets/icons/icon-pill-active.svg')}) left center no-repeat`
 						}"
 						@click="onPrev"
 					></button>
@@ -14,7 +15,7 @@
 					<button
 						class="rangepicker__selector-control-right"
 						:style="{
-							background: `url(${iconPillActive}) left center no-repeat`
+							background: `url(${require('@/assets/icons/icon-pill-active.svg')}) left center no-repeat`
 						}"
 						@click="onNext"
 					></button>
@@ -42,8 +43,6 @@
 </template>
 
 <script>
-import iconPillActive from '@/assets/icons/icon-pill-active.svg';
-
 import {
 	prevMonth,
 	nextMonth,
@@ -57,8 +56,7 @@ export default {
 
 	data() {
 		return {
-			currentDate: new Date(),
-			iconPillActive
+			currentDate: new Date()
 		};
 	},
 

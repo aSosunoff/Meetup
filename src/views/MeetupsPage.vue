@@ -12,7 +12,7 @@
 			<div class="filters-panel__col">
 				<div class="form-group form-group_inline">
 					<div class="input-group input-group_icon input-group_icon-left">
-						<img alt="icon" :src="iconSearch" class="icon" />
+						<img alt="icon" src="@/assets/icons/icon-search.svg" class="icon" />
 						<input
 							id="filters-panel__search"
 							class="form-control form-control_rounded form-control_sm"
@@ -51,7 +51,6 @@ import MeetupsCalendar from '@/components/MeetupsCalendar.vue';
 import PageTabs from '@/components/PageTabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
-import iconSearch from '@/assets/icons/icon-search.svg';
 import fetchJson from '@/utils/fetch-json';
 
 export default {
@@ -66,7 +65,6 @@ export default {
 
 	data() {
 		return {
-			iconSearch,
 			meetups: [],
 			dateFilterOptions: [
 				{ text: 'Все', value: 'all' },

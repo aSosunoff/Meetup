@@ -42,7 +42,7 @@ export default {
 					Object.entries(newQuery).filter(([key, value]) => defaults[key] !== value)
 				);
 
-				this.$router.push({ path: '/', query }).catch(err => {
+				this.$router.push({ path: this.$route.path, query }).catch(err => {
 					if (
 						err.name !== 'NavigationDuplicated' &&
 						!err.message.includes('Avoided redundant navigation to current location:')

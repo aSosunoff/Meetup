@@ -2,8 +2,11 @@
 	<header class="header">
 		<div>
 			<h1>
-				<router-link to="/" class="router-link-exact-active router-link-active">
-					<img :src="logo" alt="Meetups" />
+				<router-link
+					:to="{ name: 'main' }"
+					class="router-link-exact-active router-link-active"
+				>
+					<img src="@/assets/logo.svg" alt="Meetups" />
 				</router-link>
 			</h1>
 		</div>
@@ -11,23 +14,27 @@
 			<router-link v-if="showReturnToMeetups" :to="{ name: 'meetups' }">
 				&larr; Вернуться к списку
 			</router-link>
-			<router-link :to="{ name: 'main' }">Главная</router-link>
-			<router-link :to="{ name: 'meetups' }">Митапы</router-link>
-			<router-link :to="{ name: 'form' }">Создать митап</router-link>
-			<router-link :to="{ name: 'login' }">Вход</router-link>
+
+			<router-link :to="{ name: 'meetups', query: { participation: 'attending' } }">
+				Мои митапы
+			</router-link>
+
+			<router-link :to="{ name: 'meetups', query: { participation: 'organizing' } }">
+				Организуемые митапы
+			</router-link>
+
+			<!-- <router-link :to="{ name: 'form' }">Создать митап</router-link>
+
+			<router-link :to="{ name: 'login' }">Вход</router-link> -->
 		</nav>
 	</header>
 </template>
 
 <script>
-import logo from '@/assets/logo.svg';
-
 export default {
 	name: 'AppHeader',
 
-	data: () => ({
-		logo
-	}),
+	data: () => ({}),
 
 	computed: {
 		showReturnToMeetups() {
@@ -35,7 +42,7 @@ export default {
 		}
 	},
 
-	conponents: { logo }
+	conponents: {}
 };
 </script>
 
