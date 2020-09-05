@@ -38,7 +38,7 @@
 					</div>
 					<div class="form-group">
 						<label class="form-label">Изображение</label>
-						<ImageUploader v-model="meetupLocal.imageId" class="image-uploader" />
+						<ImageUploader v-model="meetupLocal.imageId" />
 					</div>
 				</fieldset>
 
