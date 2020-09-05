@@ -46,10 +46,10 @@
   border-color: var(--blue);
 } */
 
-textarea.form-control {
+/* textarea.form-control {
   width: 100%;
   min-height: 211px;
-}
+} */
 
 /* .form-control.form-control_rounded {
   border-radius: 26px;

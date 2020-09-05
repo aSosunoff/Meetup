@@ -44,6 +44,12 @@ const routes = [
 		component: () => import('@/views/PageWithQuery.vue')
 	},
 	{
+		path: '/create',
+		name: 'create',
+		component: () => import('@/views/FormPage.vue'),
+		props: { submitText: 'Создать', meetup: { date: new Date(), agenda: [] } }
+	},
+	{
 		path: '/meetups/:meetupId(\\d+)',
 		name: 'meetup',
 		redirect: to => ({ name: 'meetup-description', params: to.params }),
