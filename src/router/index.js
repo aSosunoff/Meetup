@@ -26,12 +26,12 @@ const routes = [
 	{
 		path: '/',
 		name: 'main',
-		component: () => import('../views/PageWithQuery.vue')
+		component: () => import('@/views/PageWithQuery.vue')
 	},
 	{
 		path: '/meetups',
 		name: 'meetups',
-		component: () => import('../views/PageWithQuery.vue')
+		component: () => import('@/views/PageWithQuery.vue')
 	},
 	{
 		path: '/meetups/:meetupId(\\d+)',
@@ -60,21 +60,21 @@ const routes = [
 	{
 		path: '/login',
 		name: 'login',
-		component: () => import('../views/LoginPage.vue')
+		component: () => import('@/views/LoginPage.vue')
 	},
-	/* {
+	{
 		path: '/register',
 		name: 'register',
-		component: () => import('../views/RegisterPage.vue')
-	}, */
+		component: () => import('@/views/RegisterPage.vue')
+	},
 	{
 		path: '/form',
 		name: 'form',
-		component: () => import('../views/FormPage.vue')
+		component: () => import('@/views/FormPage.vue')
 	},
 	{
 		path: '*',
-		component: () => import('../views/NotFoundPage.vue')
+		component: () => import('@/views/NotFoundPage.vue')
 	}
 ];
 
