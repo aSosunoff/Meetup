@@ -23,36 +23,7 @@
 </template>
 
 <script>
-/* eslint-disable global-require */
-
-/**
- * Словарь заголовков по умолчанию для всех типов элементов программы
- */
-const agendaItemTitles = {
-	registration: 'Регистрация',
-	opening: 'Открытие',
-	break: 'Перерыв',
-	coffee: 'Coffee Break',
-	closing: 'Закрытие',
-	afterparty: 'Afterparty',
-	talk: 'Доклад',
-	other: 'Другое'
-};
-
-/**
- * Словарь иконок для для всех типов элементов программы.
- * Соответствует имени иконок в директории /assets/icons
- */
-const agendaItemIcons = {
-	registration: require('../assets/icons/icon-key.svg'),
-	opening: require('../assets/icons/icon-cal-sm.svg'),
-	talk: require('../assets/icons/icon-tv.svg'),
-	break: require('../assets/icons/icon-clock.svg'),
-	coffee: require('../assets/icons/icon-coffee.svg'),
-	closing: require('../assets/icons/icon-key.svg'),
-	afterparty: require('../assets/icons/icon-cal-sm.svg'),
-	other: require('../assets/icons/icon-cal-sm.svg')
-};
+import { agendaItemTitles, agendaItemIcons } from '@/utils/helpful';
 
 export default {
 	name: 'MeetupAgendaItem',

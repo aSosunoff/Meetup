@@ -23,13 +23,7 @@
 
 <script>
 /* eslint-disable max-len */
-import { ImageService } from '@/utils/helpful';
-
-const status = {
-	load: 'Загрузить изображение',
-	expect: 'Загрузка...',
-	success: 'Удалить изображение'
-};
+import { statusLoadImage, ImageService } from '@/utils/helpful';
 
 export default {
 	name: 'ImageUploader',
@@ -92,7 +86,9 @@ export default {
 
 	computed: {
 		title() {
-			return this.imageId !== null ? status.success : status[this.statusCurent];
+			return this.imageId !== null
+				? statusLoadImage.success
+				: statusLoadImage[this.statusCurent];
 		},
 		image() {
 			return this.imageId === null ? null : `url(${ImageService.getImageURL(this.imageId)})`;

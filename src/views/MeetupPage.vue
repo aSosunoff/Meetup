@@ -31,6 +31,7 @@ import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 import DangerButton from '@/components/buttons/DangerButton.vue';
 import SecondaryButton from '@/components/buttons/SecondaryButton.vue';
 import fetchJson from '@/utils/fetch-json';
+import { ImageService } from '@/utils/helpful';
 
 export default {
 	name: 'MeetupPage',
@@ -76,7 +77,9 @@ export default {
 
 	computed: {
 		link() {
-			return this.meetup.imageId ? `url(/api/images/${this.meetup.imageId})` : '';
+			return this.meetup.imageId
+				? `url(${ImageService.getImageURL(this.meetup.imageId)})`
+				: '';
 		}
 	},
 

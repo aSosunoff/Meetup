@@ -52,6 +52,7 @@ import PageTabs from '@/components/PageTabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
 import fetchJson from '@/utils/fetch-json';
+import { ImageService } from '@/utils/helpful';
 
 export default {
 	name: 'MeetupsPage',
@@ -83,9 +84,7 @@ export default {
 		filteredMeetups() {
 			let filteredMeetups = this.meetups.map(meetup => ({
 				...meetup,
-				cover: meetup.imageId
-					? `${process.env.VUE_APP_API_URL}/images/${meetup.imageId}`
-					: undefined,
+				cover: meetup.imageId ? `${ImageService.getImageURL(meetup.imageId)}` : undefined,
 				date: new Date(meetup.date)
 			}));
 
