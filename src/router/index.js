@@ -44,10 +44,23 @@ const routes = [
 		component: () => import('@/views/PageWithQuery.vue')
 	},
 	{
-		path: '/create',
+		path: '/meetups/create',
 		name: 'create',
 		component: () => import('@/views/FormPage.vue'),
-		props: { submitText: 'Создать', meetup: { date: new Date(), agenda: [] } }
+		props: {
+			title: 'Создать митап',
+			submitText: 'Создать',
+			meetup: { date: new Date(), agenda: [] }
+		}
+	},
+	{
+		path: '/meetups/:meetupId(\\d+)/edit',
+		name: 'edit',
+		component: () => import('@/views/FormPage.vue'),
+		props: {
+			title: 'Редактирование митапа',
+			submitText: 'Редактировать'
+		}
 	},
 	{
 		path: '/meetups/:meetupId(\\d+)',
@@ -63,13 +76,13 @@ const routes = [
 				path: 'description',
 				name: 'meetup-description',
 				props: true,
-				component: () => import('@/views/MeetupDescriptionPage')
+				component: () => import('@/views/MeetupDescriptionPage.vue')
 			},
 			{
 				path: 'agenda',
 				name: 'meetup-agenda',
 				props: true,
-				component: () => import('@/views/MeetupAgendaPage')
+				component: () => import('@/views/MeetupAgendaPage.vue')
 			}
 		]
 	},

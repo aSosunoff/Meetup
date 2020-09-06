@@ -12,8 +12,9 @@
 				<div class="meetup__aside">
 					<MeetupInfo :meetup="meetup" />
 					<div class="meetup__aside-buttons">
-						<!-- <router-link :to="{ name: 'main' }">Главная</router-link> -->
-						<PrimaryButton tag="a">Редактировать</PrimaryButton>
+						<PrimaryButton :to="{ name: 'edit', props: meetup }" tag="router-link">
+							Редактировать
+						</PrimaryButton>
 						<SecondaryButton>Отменить участие</SecondaryButton>
 						<DangerButton>Удалить</DangerButton>
 					</div>
@@ -67,11 +68,10 @@ export default {
 
 	methods: {
 		setMeetup(meetup) {
-			this.meetup = meetup;
-		},
-
-		go(target) {
-			this.$router.push({ name: target });
+			this.meetup = {
+				...meetup,
+				date: new Date(meetup.date)
+			};
 		}
 	},
 

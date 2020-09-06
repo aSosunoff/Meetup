@@ -1,5 +1,5 @@
 <template>
-	<FormLayout title="Создать митап">
+	<FormLayout :title="title">
 		<form class="form meetup-form" @submit.prevent="submit">
 			<div class="meetup-form__content">
 				<fieldset class="form-section">
@@ -111,6 +111,10 @@ export default {
 	},
 
 	props: {
+		title: {
+			required: true,
+			type: String
+		},
 		meetup: {
 			required: true,
 			type: Object
