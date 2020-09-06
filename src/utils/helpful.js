@@ -97,3 +97,47 @@ export const agendaItemIcons = {
 	afterparty: calSm,
 	other: calSm
 };
+
+export const agendaItemTypes = [
+	{ value: 'registration', text: 'Регистрация' },
+	{ value: 'opening', text: 'Открытие' },
+	{ value: 'break', text: 'Перерыв' },
+	{ value: 'coffee', text: 'Coffee Break' },
+	{ value: 'closing', text: 'Закрытие' },
+	{ value: 'afterparty', text: 'Afterparty' },
+	{ value: 'talk', text: 'Доклад' },
+	{ value: 'other', text: 'Другое' }
+];
+
+export const agendaItemLanguages = [
+	{ value: null, text: 'Не указано' },
+	{ value: 'RU', text: 'RU' },
+	{ value: 'EN', text: 'EN' }
+];
+
+export const getUnicId = () =>
+	`_${Math.random()
+		.toString(36)
+		.substr(2, 9)}`;
+
+export const getTimestamp = time => {
+	const [hours, minuts] = time.split(':');
+	return new Date(
+		new Date().getFullYear(),
+		new Date().getMonth(),
+		new Date().getDate(),
+		hours,
+		minuts
+	).getTime();
+};
+
+export const agendaIconMap = {
+	registration: 'key',
+	opening: 'cal-sm',
+	talk: 'tv',
+	break: 'clock',
+	coffee: 'coffee',
+	closing: 'key',
+	afterparty: 'cal-sm',
+	other: 'cal-sm'
+};

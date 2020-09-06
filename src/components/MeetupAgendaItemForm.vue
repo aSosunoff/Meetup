@@ -5,16 +5,12 @@
 		</button>
 
 		<div class="form-group">
-			<select
-				class="form-control"
+			<DropdownButton
 				title="Тип"
+				:options="agendaItemTypesList"
 				:value="agendaItemLocal.type"
-				@change="update({ ['type']: $event.target.value })"
-			>
-				<option :value="item.value" v-for="item in agendaItemTypesList" :key="item.id">
-					{{ item.text }}
-				</option>
-			</select>
+				@change="update({ ['type']: $event })"
+			/>
 		</div>
 
 		<div class="form__row">
@@ -87,38 +83,15 @@
 </template>
 
 <script>
-const agendaItemTypes = [
-	{ value: 'registration', text: 'Регистрация' },
-	{ value: 'opening', text: 'Открытие' },
-	{ value: 'break', text: 'Перерыв' },
-	{ value: 'coffee', text: 'Coffee Break' },
-	{ value: 'closing', text: 'Закрытие' },
-	{ value: 'afterparty', text: 'Afterparty' },
-	{ value: 'talk', text: 'Доклад' },
-	{ value: 'other', text: 'Другое' }
-];
+import DropdownButton from '@/components/DropdownButton.vue';
 
-const agendaItemLanguages = [
-	{ value: null, text: 'Не указано' },
-	{ value: 'RU', text: 'RU' },
-	{ value: 'EN', text: 'EN' }
-];
-
-const getUnicId = () =>
-	`_${Math.random()
-		.toString(36)
-		.substr(2, 9)}`;
-
-const getTimestamp = time => {
-	const [hours, minuts] = time.split(':');
-	return new Date(
-		new Date().getFullYear(),
-		new Date().getMonth(),
-		new Date().getDate(),
-		hours,
-		minuts
-	).getTime();
-};
+import {
+	agendaItemTypes,
+	agendaItemLanguages,
+	getUnicId,
+	getTimestamp,
+	agendaIconMap
+} from '@/utils/helpful';
 
 const getRange = (timeStart, timeEnd) => getTimestamp(timeEnd) - getTimestamp(timeStart);
 
@@ -202,7 +175,8 @@ export default {
 		agendaItemTypesList() {
 			return agendaItemTypes.map(item => ({
 				id: getUnicId(),
-				...item
+				...item,
+				icon: agendaIconMap[item.value]
 			}));
 		},
 		titleName() {
@@ -217,6 +191,10 @@ export default {
 				other: 'Заголовок'
 			}[this.agendaItemLocal.type];
 		}
+	},
+
+	components: {
+		DropdownButton
 	}
 };
 </script>
@@ -302,5 +280,45 @@ export default {
 	color: var(--body-color);
 	margin-bottom: 10px;
 	display: block;
+}
+
+.form__row {
+	display: flex;
+	flex-direction: column;
+}
+
+.form__col + .form-col {
+	margin-top: 16px;
+}
+
+.form__col:first-child {
+	margin-left: 0;
+}
+
+@media all and (min-width: 992px) {
+	.form-section.form-section_inner {
+		padding: 28px 25% 4px 24px;
+	}
+
+	.form-section_inner .remove-button {
+		top: 20px;
+		right: 20px;
+	}
+
+	.form__row {
+		flex-direction: row;
+		justify-content: space-between;
+		margin: 0 -12px;
+	}
+
+	.form__col {
+		flex: 1 1 auto;
+		padding: 0 12px;
+		margin-top: 0;
+	}
+
+	.form__col:first-child {
+		margin-left: 0;
+	}
 }
 </style>
