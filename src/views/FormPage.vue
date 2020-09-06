@@ -86,11 +86,11 @@ import ImageUploader from '@/components/ImageUploader.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 import SecondaryButton from '@/components/buttons/SecondaryButton.vue';
 import deepClone from 'lodash/cloneDeep';
-import { getUnicId } from '@/utils/helpful';
+import { nanoid } from 'nanoid';
 
 function buildAgendaItem() {
 	return {
-		id: getUnicId(),
+		id: nanoid(),
 		startsAt: '00:00',
 		endsAt: '00:00',
 		type: 'other',

@@ -15,7 +15,6 @@ import search from '@/assets/icons/icon-search.svg';
 import trash from '@/assets/icons/icon-trash.svg';
 import tv from '@/assets/icons/icon-tv.svg';
 import user from '@/assets/icons/icon-user.svg';
-import { nanoid } from 'nanoid';
 
 export const iconMap = {
 	'alert-circle': alertCircle,
@@ -115,8 +114,6 @@ export const agendaItemLanguages = [
 	{ value: 'RU', text: 'RU' },
 	{ value: 'EN', text: 'EN' }
 ];
-
-export const getUnicId = () => nanoid();
 
 export const getTimestamp = time => {
 	const [hours, minuts] = time.split(':');

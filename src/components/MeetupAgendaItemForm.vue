@@ -94,10 +94,11 @@ import DropdownButton from '@/components/DropdownButton.vue';
 import {
 	agendaItemTypes,
 	agendaItemLanguages,
-	getUnicId,
 	getTimestamp,
 	agendaIconMap
 } from '@/utils/helpful';
+
+import { nanoid } from 'nanoid';
 
 const getRange = (timeStart, timeEnd) => getTimestamp(timeEnd) - getTimestamp(timeStart);
 
@@ -174,13 +175,13 @@ export default {
 	computed: {
 		agendaItemLanguagesList() {
 			return agendaItemLanguages.map(item => ({
-				id: getUnicId(),
+				id: nanoid(),
 				...item
 			}));
 		},
 		agendaItemTypesList() {
 			return agendaItemTypes.map(item => ({
-				id: getUnicId(),
+				id: nanoid(),
 				...item,
 				icon: agendaIconMap[item.value]
 			}));
