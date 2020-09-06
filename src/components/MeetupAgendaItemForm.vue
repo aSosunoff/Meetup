@@ -17,67 +17,73 @@
 			<div class="form__col">
 				<div class="form-group">
 					<label class="form-label">Начало</label>
-					<input
-						class="form-control"
-						type="time"
-						:value="agendaItemLocal.startsAt"
-						:placeholder="agendaItemLocal.startsAt"
-						@input="changeStartTime($event.target.value)"
-					/>
+					<div class="input-group">
+						<input
+							class="form-control"
+							type="time"
+							:value="agendaItemLocal.startsAt"
+							:placeholder="agendaItemLocal.startsAt"
+							@input="changeStartTime($event.target.value)"
+						/>
+					</div>
 				</div>
 			</div>
 			<div class="form__col">
 				<div class="form-group">
 					<label class="form-label">Окончание</label>
-					<input
-						class="form-control"
-						type="time"
-						:value="agendaItemLocal.endsAt"
-						:placeholder="agendaItemLocal.endsAt"
-						@input="update({ ['endsAt']: $event.target.value })"
-					/>
+					<div class="input-group">
+						<input
+							class="form-control"
+							type="time"
+							:value="agendaItemLocal.endsAt"
+							:placeholder="agendaItemLocal.endsAt"
+							@input="update({ ['endsAt']: $event.target.value })"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="form-group" v-if="fieldEnabled('title')">
 			<label class="form-label">{{ titleName }}</label>
-			<input
-				class="form-control"
-				:value="agendaItemLocal.title"
-				@input="update({ ['title']: $event.target.value })"
-			/>
+			<div class="input-group">
+				<input
+					class="form-control"
+					:value="agendaItemLocal.title"
+					@input="update({ ['title']: $event.target.value })"
+				/>
+			</div>
 		</div>
 
 		<div class="form-group" v-if="fieldEnabled('speaker')">
 			<label class="form-label">Докладчик</label>
-			<input
-				class="form-control"
-				:value="agendaItemLocal.speaker"
-				@input="update({ ['speaker']: $event.target.value })"
-			/>
+			<div class="input-group">
+				<input
+					class="form-control"
+					:value="agendaItemLocal.speaker"
+					@input="update({ ['speaker']: $event.target.value })"
+				/>
+			</div>
 		</div>
 
 		<div class="form-group" v-if="fieldEnabled('description')">
 			<label class="form-label">Описание</label>
-			<textarea
-				class="form-control"
-				:value="agendaItemLocal.description"
-				@input="update({ ['description']: $event.target.value })"
-			></textarea>
+			<div class="input-group">
+				<textarea
+					class="form-control"
+					:value="agendaItemLocal.description"
+					@input="update({ ['description']: $event.target.value })"
+				></textarea>
+			</div>
 		</div>
 
 		<div class="form-group" v-if="fieldEnabled('language')">
-			<label class="form-label">Язык</label>
-			<select
-				class="form-control"
+			<DropdownButton
+				title="Язык"
+				:options="agendaItemLanguagesList"
 				:value="agendaItemLocal.language"
-				@change="update({ ['language']: $event.target.value })"
-			>
-				<option :value="item.value" v-for="item in agendaItemLanguagesList" :key="item.id">
-					{{ item.text }}
-				</option>
-			</select>
+				@change="update({ ['language']: $event })"
+			/>
 		</div>
 	</div>
 </template>
@@ -320,5 +326,36 @@ export default {
 	.form__col:first-child {
 		margin-left: 0;
 	}
+}
+
+.input-group {
+	position: relative;
+}
+
+.input-group .form-control {
+	width: 100%;
+}
+
+.input-group.input-group_icon .form-control {
+	padding-left: 50px;
+}
+
+.input-group.input-group_icon .icon {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+.input-group.input-group_icon.input-group_icon-left .icon {
+	left: 16px;
+}
+
+.input-group.input-group_icon.input-group_icon-right .icon {
+	right: 16px;
+}
+
+textarea.form-control {
+	width: 100%;
+	min-height: 211px;
 }
 </style>
