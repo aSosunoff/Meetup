@@ -29,7 +29,9 @@
 			</div>
 			<div class="form__append">
 				Уже есть аккаунт?
-				<router-link :to="{ name: 'login' }" class="link">Войдите</router-link>
+				<LinkButton tag="router-link" :to="{ name: 'login' }">
+					Войдите
+				</LinkButton>
 			</div>
 		</form>
 	</auth-layout>
@@ -41,6 +43,7 @@ import InputGroup from '@/components/UI/InputGroup.vue';
 import AppCheckbox from '@/components/UI/AppCheckbox.vue';
 import AuthLayout from '@/layout/AuthLayout.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
+import LinkButton from '@/components/buttons/LinkButton.vue';
 
 export default {
 	name: 'RegisterPage',
@@ -102,7 +105,7 @@ export default {
 		}
 	},
 
-	components: { AuthLayout, PrimaryButton, FormGroup, InputGroup, AppCheckbox }
+	components: { AuthLayout, PrimaryButton, FormGroup, InputGroup, AppCheckbox, LinkButton }
 };
 </script>
 

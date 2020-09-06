@@ -36,14 +36,14 @@ ul {
   margin-bottom: 0 !important;
 }
 
-.link {
+/* .link {
   color: var(--blue);
   text-decoration: none;
 }
 
 .link:hover {
   text-decoration: underline;
-}
+} */
 
 .container {
   max-width: 1008px;

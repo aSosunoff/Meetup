@@ -1,5 +1,5 @@
 <template>
-	<BaseButton class="button_secondary" v-bind="$attrs" v-on="$listeners">
+	<BaseButton class="link" v-bind="$attrs" v-on="$listeners">
 		<slot />
 	</BaseButton>
 </template>
@@ -8,7 +8,7 @@
 import BaseButton from '@/components/buttons/BaseButton.vue';
 
 export default {
-	name: 'SecondaryButton',
+	name: 'LinkButton',
 	inheritAttrs: false,
 	components: {
 		BaseButton
@@ -17,13 +17,12 @@ export default {
 </script>
 
 <style scoped>
-.button_secondary {
-	background-color: var(--white);
-	border-color: var(--blue);
+.link {
 	color: var(--blue);
+	text-decoration: none;
 }
 
-.button_secondary:hover {
-	border-color: var(--blue-light);
+.link:hover {
+	text-decoration: underline;
 }
 </style>

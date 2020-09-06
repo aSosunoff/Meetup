@@ -26,7 +26,9 @@
 			</div>
 			<div class="form__append">
 				Нет аккаунта?
-				<router-link :to="{ name: 'register' }" class="link">Зарегистрируйтесь</router-link>
+				<LinkButton tag="router-link" :to="{ name: 'register' }">
+					Зарегистрируйтесь
+				</LinkButton>
 			</div>
 		</form>
 	</auth-layout>
@@ -34,6 +36,7 @@
 
 <script>
 import FormGroup from '@/components/UI/FormGroup.vue';
+import LinkButton from '@/components/buttons/LinkButton.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
 import AuthLayout from '@/layout/AuthLayout.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
@@ -75,7 +78,7 @@ export default {
 		}
 	},
 
-	components: { AuthLayout, PrimaryButton, FormGroup, InputGroup }
+	components: { AuthLayout, PrimaryButton, FormGroup, InputGroup, LinkButton }
 };
 </script>
 

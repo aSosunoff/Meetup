@@ -9,6 +9,7 @@ import BaseButton from '@/components/buttons/BaseButton.vue';
 
 export default {
 	name: 'PrimaryButton',
+	inheritAttrs: false,
 	components: {
 		BaseButton
 	}
