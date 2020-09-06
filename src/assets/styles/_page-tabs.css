@@ -1,4 +1,4 @@
-.page-tabs {
+/* .page-tabs {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -49,3 +49,4 @@
 .page-tabs__tab.page-tabs__tab_active svg {
   fill: var(--white);
 }
+ */
