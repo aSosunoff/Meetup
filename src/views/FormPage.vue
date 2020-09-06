@@ -3,43 +3,38 @@
 		<form class="form meetup-form" @submit.prevent="submit">
 			<div class="meetup-form__content">
 				<fieldset class="form-section">
-					<div class="form-group">
-						<label class="form-label">Название</label>
-						<div class="input-group">
+					<FormGroup title="Название">
+						<InputGroup>
 							<input class="form-control" v-model="meetupLocal.title" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="form-label">Дата</label>
-						<div class="input-group">
+						</InputGroup>
+					</FormGroup>
+					<FormGroup title="Дата">
+						<InputGroup>
 							<input
 								class="form-control"
 								type="date"
 								:value="dateFormat"
 								@input="meetupLocal.date = new Date($event.target.value)"
 							/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="form-label">Место проведения</label>
-						<div class="input-group">
+						</InputGroup>
+					</FormGroup>
+					<FormGroup title="Место проведения">
+						<InputGroup>
 							<input class="form-control" v-model="meetupLocal.place" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="form-label">Описание</label>
-						<div class="input-group">
+						</InputGroup>
+					</FormGroup>
+					<FormGroup title="Описание">
+						<InputGroup>
 							<textarea
 								class="form-control"
 								rows="3"
 								v-model="meetupLocal.description"
 							></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="form-label">Изображение</label>
+						</InputGroup>
+					</FormGroup>
+					<FormGroup title="Изображение">
 						<ImageUploader v-model="meetupLocal.imageId" />
-					</div>
+					</FormGroup>
 				</fieldset>
 
 				<h3 class="form__section-title">Программа</h3>
@@ -85,6 +80,8 @@ import FormLayout from '@/layout/FormLayout.vue';
 import ImageUploader from '@/components/ImageUploader.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 import SecondaryButton from '@/components/buttons/SecondaryButton.vue';
+import FormGroup from '@/components/UI/FormGroup.vue';
+import InputGroup from '@/components/UI/InputGroup.vue';
 import deepClone from 'lodash/cloneDeep';
 import { nanoid } from 'nanoid';
 
@@ -160,27 +157,21 @@ export default {
 		}
 	},
 
-	components: { FormLayout, ImageUploader, MeetupAgendaItemForm, PrimaryButton, SecondaryButton }
+	components: {
+		FormLayout,
+		ImageUploader,
+		MeetupAgendaItemForm,
+		PrimaryButton,
+		SecondaryButton,
+		FormGroup,
+		InputGroup
+	}
 };
 </script>
 
 <style scoped>
 .input-group .form-control {
 	width: 100%;
-}
-
-.form-group {
-	position: relative;
-	margin-bottom: 24px;
-}
-
-.form-label {
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 28px;
-	color: var(--body-color);
-	margin-bottom: 10px;
-	display: block;
 }
 
 .form-control {

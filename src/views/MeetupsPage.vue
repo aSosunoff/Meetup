@@ -10,8 +10,8 @@
 			</div>
 
 			<div class="filters-panel__col">
-				<div class="form-group form-group_inline">
-					<div class="input-group input-group_icon input-group_icon-left">
+				<FormGroup inline>
+					<InputGroup class="input-group_icon input-group_icon-left">
 						<img alt="icon" src="@/assets/icons/icon-search.svg" class="icon" />
 						<input
 							id="filters-panel__search"
@@ -21,11 +21,11 @@
 							:value="search"
 							@input="$emit('update:search', $event.target.value)"
 						/>
-					</div>
-				</div>
-				<div class="form-group form-group_inline">
+					</InputGroup>
+				</FormGroup>
+				<FormGroup inline>
 					<page-tabs :selected="view" @select="$emit('update:view', $event)"></page-tabs>
-				</div>
+				</FormGroup>
 			</div>
 		</div>
 
@@ -52,6 +52,8 @@ import PageTabs from '@/components/PageTabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
 import fetchJson from '@/utils/fetch-json';
+import FormGroup from '@/components/UI/FormGroup.vue';
+import InputGroup from '@/components/UI/InputGroup.vue';
 import { ImageService } from '@/utils/helpful';
 
 export default {
@@ -123,14 +125,30 @@ export default {
 		MeetupsCalendar,
 		PageTabs,
 		FormCheck,
-		AppEmpty
+		AppEmpty,
+		FormGroup,
+		InputGroup
 	}
 };
 </script>
 
 <style scoped>
 .input-group.input-group_icon .form-control {
-  padding-left: 50px;
+	padding-left: 50px;
+}
+
+.input-group.input-group_icon .icon {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+.input-group.input-group_icon.input-group_icon-left .icon {
+	left: 16px;
+}
+
+.input-group.input-group_icon.input-group_icon-right .icon {
+	right: 16px;
 }
 
 .form-control {
@@ -170,29 +188,6 @@ export default {
 	padding: 8px 16px;
 	height: 44px;
 	border-radius: 4px;
-}
-
-.input-group {
-	position: relative;
-}
-
-.input-group.input-group_icon .icon {
-	position: absolute;
-	top: 50%;
-	transform: translate(0, -50%);
-}
-
-.input-group.input-group_icon.input-group_icon-left .icon {
-	left: 16px;
-}
-
-.input-group.input-group_icon.input-group_icon-right .icon {
-	right: 16px;
-}
-
-.form-group.form-group_inline {
-	display: inline-block;
-	margin-bottom: 0;
 }
 
 .form-group.form-group_inline + .form-group.form-group_inline {

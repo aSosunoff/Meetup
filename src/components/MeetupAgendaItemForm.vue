@@ -4,20 +4,19 @@
 			<img src="@/assets/icons/icon-trash.svg" alt="trash" />
 		</button>
 
-		<div class="form-group">
+		<FormGroup>
 			<DropdownButton
 				title="Тип"
 				:options="agendaItemTypesList"
 				:value="agendaItemLocal.type"
 				@change="update({ ['type']: $event })"
 			/>
-		</div>
+		</FormGroup>
 
 		<div class="form__row">
 			<div class="form__col">
-				<div class="form-group">
-					<label class="form-label">Начало</label>
-					<div class="input-group">
+				<FormGroup title="Начало">
+					<InputGroup>
 						<input
 							class="form-control"
 							type="time"
@@ -25,13 +24,12 @@
 							:placeholder="agendaItemLocal.startsAt"
 							@input="changeStartTime($event.target.value)"
 						/>
-					</div>
-				</div>
+					</InputGroup>
+				</FormGroup>
 			</div>
 			<div class="form__col">
-				<div class="form-group">
-					<label class="form-label">Окончание</label>
-					<div class="input-group">
+				<FormGroup title="Окончание">
+					<InputGroup>
 						<input
 							class="form-control"
 							type="time"
@@ -39,64 +37,58 @@
 							:placeholder="agendaItemLocal.endsAt"
 							@input="update({ ['endsAt']: $event.target.value })"
 						/>
-					</div>
-				</div>
+					</InputGroup>
+				</FormGroup>
 			</div>
 		</div>
 
-		<div class="form-group" v-if="fieldEnabled('title')">
-			<label class="form-label">{{ titleName }}</label>
-			<div class="input-group">
+		<FormGroup :title="titleName" v-if="fieldEnabled('title')">
+			<InputGroup>
 				<input
 					class="form-control"
 					:value="agendaItemLocal.title"
 					@input="update({ ['title']: $event.target.value })"
 				/>
-			</div>
-		</div>
+			</InputGroup>
+		</FormGroup>
 
-		<div class="form-group" v-if="fieldEnabled('speaker')">
-			<label class="form-label">Докладчик</label>
-			<div class="input-group">
+		<FormGroup title="Докладчик" v-if="fieldEnabled('speaker')">
+			<InputGroup>
 				<input
 					class="form-control"
 					:value="agendaItemLocal.speaker"
 					@input="update({ ['speaker']: $event.target.value })"
 				/>
-			</div>
-		</div>
+			</InputGroup>
+		</FormGroup>
 
-		<div class="form-group" v-if="fieldEnabled('description')">
-			<label class="form-label">Описание</label>
-			<div class="input-group">
+		<FormGroup title="Описание" v-if="fieldEnabled('description')">
+			<InputGroup>
 				<textarea
 					class="form-control"
 					:value="agendaItemLocal.description"
 					@input="update({ ['description']: $event.target.value })"
 				></textarea>
-			</div>
-		</div>
+			</InputGroup>
+		</FormGroup>
 
-		<div class="form-group" v-if="fieldEnabled('language')">
+		<FormGroup v-if="fieldEnabled('language')">
 			<DropdownButton
 				title="Язык"
 				:options="agendaItemLanguagesList"
 				:value="agendaItemLocal.language"
 				@change="update({ ['language']: $event })"
 			/>
-		</div>
+		</FormGroup>
 	</div>
 </template>
 
 <script>
+import FormGroup from '@/components/UI/FormGroup.vue';
+import InputGroup from '@/components/UI/InputGroup.vue';
 import DropdownButton from '@/components/DropdownButton.vue';
 
-import {
-	agendaItemTypes,
-	agendaItemLanguages,
-	getTimestamp,
-	agendaIconMap
-} from '@/utils/helpful';
+import { agendaItemTypes, agendaItemLanguages, getTimestamp, agendaIconMap } from '@/utils/helpful';
 
 import { nanoid } from 'nanoid';
 
@@ -201,17 +193,14 @@ export default {
 	},
 
 	components: {
-		DropdownButton
+		DropdownButton,
+		FormGroup,
+		InputGroup
 	}
 };
 </script>
 
 <style scoped>
-.form-group {
-	position: relative;
-	margin-bottom: 24px;
-}
-
 .form-control {
 	padding: 12px 16px;
 	height: 52px;
@@ -280,15 +269,6 @@ export default {
 	}
 }
 
-.form-label {
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 28px;
-	color: var(--body-color);
-	margin-bottom: 10px;
-	display: block;
-}
-
 .form__row {
 	display: flex;
 	flex-direction: column;
@@ -327,10 +307,6 @@ export default {
 	.form__col:first-child {
 		margin-left: 0;
 	}
-}
-
-.input-group {
-	position: relative;
 }
 
 .input-group .form-control {

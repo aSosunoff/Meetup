@@ -1,28 +1,26 @@
 <template>
 	<auth-layout title="Вход">
 		<form class="form" @submit.prevent="submitHandler">
-			<div class="form-group">
-				<label class="form-label">Email</label>
-				<div class="input-group">
+			<FormGroup title="Email">
+				<InputGroup>
 					<input
 						v-model="email"
 						type="email"
 						placeholder="demo@email"
 						class="form-control"
 					/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="form-label">Пароль</label>
-				<div class="input-group">
+				</InputGroup>
+			</FormGroup>
+			<FormGroup title="Пароль">
+				<InputGroup>
 					<input
 						v-model="password"
 						type="password"
 						placeholder="password"
 						class="form-control"
 					/>
-				</div>
-			</div>
+				</InputGroup>
+			</FormGroup>
 			<div class="form__buttons">
 				<PrimaryButton type="submit">Войти</PrimaryButton>
 			</div>
@@ -35,6 +33,8 @@
 </template>
 
 <script>
+import FormGroup from '@/components/UI/FormGroup.vue';
+import InputGroup from '@/components/UI/InputGroup.vue';
 import AuthLayout from '@/layout/AuthLayout.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 
@@ -75,27 +75,13 @@ export default {
 		}
 	},
 
-	components: { AuthLayout, PrimaryButton }
+	components: { AuthLayout, PrimaryButton, FormGroup, InputGroup }
 };
 </script>
 
 <style scoped>
 .form {
 	margin: 0;
-}
-
-.form-group {
-	position: relative;
-	margin-bottom: 24px;
-}
-
-.form-label {
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 28px;
-	color: var(--body-color);
-	margin-bottom: 10px;
-	display: block;
 }
 
 .form-control {
@@ -125,10 +111,6 @@ export default {
 
 .input-group.input-group_icon .form-control {
 	padding-left: 50px;
-}
-
-.input-group {
-	position: relative;
 }
 
 .input-group .form-control {
