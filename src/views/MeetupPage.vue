@@ -95,6 +95,10 @@ export default {
 </script>
 
 <style scoped>
+.bg-white {
+	background-color: var(--white);
+}
+
 .meetup {
 	display: flex;
 	flex-direction: column;

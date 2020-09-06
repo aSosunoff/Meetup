@@ -14,19 +14,15 @@ ul {
   padding: 0 0 0 20px;
 }
 
-.wrapper {
+/* .wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
+} */
 
-.bg-white {
-  background-color: var(--white);
-}
-
-.bg-grey {
+/* .bg-grey {
   background-color: var(--grey-light);
-}
+} */
 
 .text-center {
   text-align: center;

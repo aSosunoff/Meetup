@@ -1,19 +1,10 @@
 <template>
-	<div id="app">
-		<div
-			class="progress"
-			style="width: 75%; background-color: rgb(76, 107, 182); opacity: 1;"
-		></div>
-
-		<div class="wrapper bg-grey">
-			<TheHeader />
-
-			<main class="main">
-				<slot />
-			</main>
-
-			<TheFooter />
-		</div>
+	<div class="wrapper bg-grey">
+		<TheHeader />
+		<main class="main">
+			<slot />
+		</main>
+		<TheFooter />
 	</div>
 </template>
 
@@ -30,5 +21,15 @@ export default {
 <style scoped>
 main {
 	flex: 1 0 auto;
+}
+
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.bg-grey {
+	background-color: var(--grey-light);
 }
 </style>

@@ -1,7 +1,13 @@
 <template>
-	<base-layout id="app">
-		<router-view />
-	</base-layout>
+	<div id="app">
+		<div
+			class="progress"
+			style="width: 75%; background-color: rgb(76, 107, 182); opacity: 1;"
+		></div>
+		<base-layout>
+			<router-view />
+		</base-layout>
+	</div>
 </template>
 
 <script>
