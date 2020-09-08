@@ -69,6 +69,10 @@ export const MeetupServise = {
 	async getMeetupById(id) {
 		const meetup = await fetchJson(`${process.env.VUE_APP_API_URL}/meetups/${id}`);
 		return meetup;
+	},
+	async getMeetups() {
+		const meetups = await fetchJson(`${process.env.VUE_APP_API_URL}/meetups`);
+		return meetups;
 	}
 };
 

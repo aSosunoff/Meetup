@@ -46,10 +46,9 @@ import Calendar from '@/components/Meetups/Calendar.vue';
 import Tabs from '@/components/Meetups/Tabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
-import fetchJson from '@/utils/fetch-json';
 import FormGroup from '@/components/UI/FormGroup.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
-import { ImageService } from '@/utils/helpful';
+import { ImageService, MeetupServise } from '@/utils/helpful';
 
 const defaults = {
 	view: 'list',
@@ -109,7 +108,7 @@ export default {
 	},
 
 	async mounted() {
-		const meetups = await fetchJson(`${process.env.VUE_APP_API_URL}/meetups`);
+		const meetups = await MeetupServise.getMeetups();
 		this.meetups = meetups;
 	},
 
