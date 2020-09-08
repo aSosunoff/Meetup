@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-white">
-		<MeetupCover :title="meetup.title" :link="link" />
+		<Cover :title="meetup.title" :link="link" />
 
 		<div class="container">
 			<div class="meetup">
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import MeetupCover from '@/components/MeetupCover.vue';
+import Cover from '@/components/Meetup/Cover.vue';
 import MeetupInfo from '@/components/MeetupInfo.vue';
 import ContentTabs from '@/components/ContentTabs.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
@@ -81,7 +81,7 @@ export default {
 	},
 
 	components: {
-		MeetupCover,
+		Cover,
 		MeetupInfo,
 		ContentTabs,
 		DangerButton,

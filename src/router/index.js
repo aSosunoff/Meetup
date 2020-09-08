@@ -51,11 +51,7 @@ const routes = [
 	{
 		path: '/meetups/:meetupId(\\d+)/edit',
 		name: 'edit',
-		component: () => import('@/views/EditPage.vue'),
-		props: {
-			title: 'Редактирование митапа',
-			submitText: 'Редактировать'
-		}
+		component: () => import('@/views/EditPage.vue')
 	},
 	{
 		path: '/meetups/:meetupId(\\d+)',
@@ -65,19 +61,19 @@ const routes = [
 			showReturnToMeetups: true,
 			saveScrollPosition: true
 		},
-		component: () => import('@/views/MeetupPage'),
+		component: () => import('@/views/Meetup/'),
 		children: [
 			{
 				path: 'description',
 				name: 'meetup-description',
 				props: true,
-				component: () => import('@/views/MeetupDescriptionPage.vue')
+				component: () => import('@/views/Meetup/Description.vue')
 			},
 			{
 				path: 'agenda',
 				name: 'meetup-agenda',
 				props: true,
-				component: () => import('@/views/MeetupAgendaPage.vue')
+				component: () => import('@/views/Meetup/Agenda.vue')
 			}
 		]
 	},

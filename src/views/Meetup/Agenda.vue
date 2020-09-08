@@ -4,12 +4,12 @@
 			Программа пока пуста, но когда-нибудь в ней обязательно что-нибудь появится!
 		</p>
 
-		<MeetupAgendaItem v-else v-for="item of meetup.agenda" :key="item.id" :agendaItem="item" />
+		<AgendaItem v-else v-for="item of meetup.agenda" :key="item.id" :agendaItem="item" />
 	</div>
 </template>
 
 <script>
-import MeetupAgendaItem from '@/components/MeetupAgendaItem.vue';
+import AgendaItem from '@/components/Meetup/AgendaItem.vue';
 
 export default {
 	name: 'MeetupAgenda',
@@ -25,7 +25,7 @@ export default {
 	},
 
 	components: {
-		MeetupAgendaItem
+		AgendaItem
 	}
 };
 </script>
