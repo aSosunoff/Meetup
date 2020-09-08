@@ -1,5 +1,5 @@
 <template>
-	<auth-layout title="Вход">
+	<AuthLayout title="Вход">
 		<form class="form" @submit.prevent="submitHandler">
 			<FormGroup title="Email">
 				<InputGroup>
@@ -21,21 +21,23 @@
 					/>
 				</InputGroup>
 			</FormGroup>
-			<div class="form__buttons">
+			<FormButtons>
 				<PrimaryButton type="submit">Войти</PrimaryButton>
-			</div>
-			<div class="form__append">
+			</FormButtons>
+			<FormAppend>
 				Нет аккаунта?
 				<LinkButton tag="router-link" :to="{ name: 'register' }">
 					Зарегистрируйтесь
 				</LinkButton>
-			</div>
+			</FormAppend>
 		</form>
-	</auth-layout>
+	</AuthLayout>
 </template>
 
 <script>
 import FormGroup from '@/components/UI/FormGroup.vue';
+import FormButtons from '@/components/UI/FormButtons.vue';
+import FormAppend from '@/components/UI/FormAppend.vue';
 import LinkButton from '@/components/buttons/LinkButton.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
 import AuthLayout from '@/components/layout/AuthLayout.vue';
@@ -78,7 +80,15 @@ export default {
 		}
 	},
 
-	components: { AuthLayout, PrimaryButton, FormGroup, InputGroup, LinkButton }
+	components: {
+		AuthLayout,
+		PrimaryButton,
+		FormGroup,
+		InputGroup,
+		LinkButton,
+		FormButtons,
+		FormAppend
+	}
 };
 </script>
 
@@ -118,24 +128,5 @@ export default {
 
 .input-group .form-control {
 	width: 100%;
-}
-
-.form__buttons {
-	display: flex;
-	flex-direction: column;
-	padding: 0 40px;
-	margin-top: 40px;
-}
-
-.form__buttons .button + .button {
-	margin-bottom: 8px;
-}
-
-.form__append {
-	margin-top: 40px;
-	text-align: center;
-	font-weight: 400;
-	font-size: 20px;
-	line-height: 28px;
 }
 </style>

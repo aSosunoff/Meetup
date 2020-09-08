@@ -4,9 +4,9 @@
 			class="progress"
 			style="width: 75%; background-color: rgb(76, 107, 182); opacity: 1;"
 		></div>
-		<base-layout>
+		<BaseLayout>
 			<router-view />
-		</base-layout>
+		</BaseLayout>
 	</div>
 </template>
 
