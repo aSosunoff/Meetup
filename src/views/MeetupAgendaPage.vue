@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import MeetupAgendaItem from '@/views/MeetupAgendaItem.vue';
+import MeetupAgendaItem from '@/components/MeetupAgendaItem.vue';
 
 export default {
 	name: 'MeetupAgenda',
