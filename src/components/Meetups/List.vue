@@ -1,11 +1,11 @@
 <template>
 	<div class="meetups-list transition-list">
 		<transition-group name="transition-list">
-			<meetup-list-item
+			<MeetupListItem
 				v-for="meetup in meetups"
 				:meetup="meetup"
 				:key="meetup.id"
-			></meetup-list-item>
+			></MeetupListItem>
 		</transition-group>
 	</div>
 </template>

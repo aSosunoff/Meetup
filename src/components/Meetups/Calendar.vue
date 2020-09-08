@@ -4,21 +4,9 @@
 		<div class="rangepicker__calendar">
 			<div class="rangepicker__month-indicator">
 				<div class="rangepicker__selector-controls">
-					<button
-						class="rangepicker__selector-control-left"
-						:style="{
-							background: `url(${require('@/assets/icons/icon-pill-active.svg')}) left center no-repeat`
-						}"
-						@click="onPrev"
-					></button>
+					<button class="rangepicker__selector-control-left" @click="onPrev"></button>
 					<div>{{ dateLineDate }}</div>
-					<button
-						class="rangepicker__selector-control-right"
-						:style="{
-							background: `url(${require('@/assets/icons/icon-pill-active.svg')}) left center no-repeat`
-						}"
-						@click="onNext"
-					></button>
+					<button class="rangepicker__selector-control-right" @click="onNext"></button>
 				</div>
 			</div>
 
@@ -210,7 +198,7 @@ export default {
 	justify-content: center;
 	cursor: pointer;
 	transition: 0.3s all;
-	/* background: url('assets/icons/icon-pill-active.svg') left center no-repeat; */
+	background: url('../../assets/icons/icon-pill-active.svg') left center no-repeat;
 	background-size: cover;
 }
 
