@@ -1,15 +1,15 @@
 <template>
 	<ul class="info-list">
 		<li>
-			<app-icon icon="user" class="info-list__icon" />
+			<AppIcon icon="user" class="info-list__icon" />
 			{{ meetup.organizer }}
 		</li>
 		<li>
-			<app-icon icon="map" class="info-list__icon" />
+			<AppIcon icon="map" class="info-list__icon" />
 			{{ meetup.place }}
 		</li>
 		<li>
-			<app-icon icon="cal-lg" class="info-list__icon" />
+			<AppIcon icon="cal-lg" class="info-list__icon" />
 			<time :datetime="hideDate">{{ visibleDate }}</time>
 		</li>
 	</ul>

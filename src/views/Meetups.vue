@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import List from '@/components/Meetups/List.vue';
 import Calendar from '@/components/Meetups/Calendar.vue';
+import List from '@/components/Meetups/List/index.vue';
 import Tabs from '@/components/Meetups/Tabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
