@@ -41,7 +41,7 @@
 import FormGroup from '@/components/UI/FormGroup.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
 import AppCheckbox from '@/components/UI/AppCheckbox.vue';
-import AuthLayout from '@/layout/AuthLayout.vue';
+import AuthLayout from '@/components/layout/AuthLayout.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 import LinkButton from '@/components/buttons/LinkButton.vue';
 

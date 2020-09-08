@@ -76,7 +76,7 @@
 
 <script>
 import MeetupAgendaItemForm from '@/components/MeetupAgendaItemForm.vue';
-import FormLayout from '@/layout/FormLayout.vue';
+import FormLayout from '@/components/layout/FormLayout.vue';
 import ImageUploader from '@/components/ImageUploader.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 import SecondaryButton from '@/components/buttons/SecondaryButton.vue';

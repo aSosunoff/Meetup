@@ -38,7 +38,7 @@
 import FormGroup from '@/components/UI/FormGroup.vue';
 import LinkButton from '@/components/buttons/LinkButton.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
-import AuthLayout from '@/layout/AuthLayout.vue';
+import AuthLayout from '@/components/layout/AuthLayout.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 
 export default {
