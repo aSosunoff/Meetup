@@ -2,11 +2,7 @@
 	<div class="container">
 		<div class="filters-panel">
 			<div class="filters-panel__col">
-				<form-check
-					:options="dateFilterOptions"
-					:selected="date"
-					@change="$emit('update:date', $event)"
-				></form-check>
+				<form-check :options="dateFilterOptions" v-model="query.date"></form-check>
 			</div>
 
 			<div class="filters-panel__col">
@@ -18,25 +14,24 @@
 							class="form-control form-control_rounded form-control_sm"
 							type="text"
 							placeholder="Поиск"
-							:value="search"
-							@input="$emit('update:search', $event.target.value)"
+							v-model="query.search"
 						/>
 					</InputGroup>
 				</FormGroup>
 				<FormGroup inline>
-					<page-tabs :selected="view" @select="$emit('update:view', $event)"></page-tabs>
+					<page-tabs v-model="query.view"></page-tabs>
 				</FormGroup>
 			</div>
 		</div>
 
 		<transition v-if="filteredMeetups && filteredMeetups.length" name="fade" mode="out-in">
 			<meetups-list
-				v-if="view === '' || view === 'list'"
+				v-if="query.view === '' || query.view === 'list'"
 				:meetups="filteredMeetups"
 				key="list"
 			></meetups-list>
 			<meetups-calendar
-				v-else-if="view === 'calendar'"
+				v-else-if="query.view === 'calendar'"
 				:meetups="filteredMeetups"
 				key="calendar"
 			></meetups-calendar>
@@ -56,15 +51,17 @@ import FormGroup from '@/components/UI/FormGroup.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
 import { ImageService } from '@/utils/helpful';
 
+const defaults = {
+	view: 'list',
+	date: 'all',
+	participation: 'all',
+	search: ''
+};
+
 export default {
 	name: 'MeetupsPage',
 
-	props: {
-		view: String,
-		date: String,
-		participation: String,
-		search: String
-	},
+	props: {},
 
 	data() {
 		return {
@@ -73,8 +70,42 @@ export default {
 				{ text: 'Все', value: 'all' },
 				{ text: 'Прошедшие', value: 'past' },
 				{ text: 'Ожидаемые', value: 'future' }
-			]
+			],
+			query: {
+				view: defaults.view,
+				date: defaults.date,
+				participation: defaults.participation,
+				search: defaults.search
+			}
 		};
+	},
+
+	watch: {
+		query: {
+			deep: true,
+			handler(newQuery) {
+				const query = Object.fromEntries(
+					Object.entries(newQuery).filter(([key, value]) => defaults[key] !== value)
+				);
+
+				this.$router.push({ path: this.$route.path, query }).catch(err => {
+					if (
+						err.name !== 'NavigationDuplicated' &&
+						!err.message.includes('Avoided redundant navigation to current location:')
+					) {
+						throw err;
+					}
+				});
+			}
+		},
+		'$route.query': {
+			immediate: true,
+			handler(newQuery) {
+				this.query = Object.fromEntries(
+					Object.keys(this.query).map(key => [key, newQuery[key] || defaults[key]])
+				);
+			}
+		}
 	},
 
 	async mounted() {
@@ -90,29 +121,29 @@ export default {
 				date: new Date(meetup.date)
 			}));
 
-			if (this.date === 'past') {
+			if (this.query.date === 'past') {
 				filteredMeetups = filteredMeetups.filter(
 					meetup => new Date(meetup.date) <= new Date()
 				);
-			} else if (this.date === 'future') {
+			} else if (this.query.date === 'future') {
 				filteredMeetups = filteredMeetups.filter(
 					meetup => new Date(meetup.date) > new Date()
 				);
 			}
 
-			if (this.participation === 'organizing') {
+			if (this.query.participation === 'organizing') {
 				filteredMeetups = filteredMeetups.filter(meetup => meetup.organizing);
-			} else if (this.participation === 'attending') {
+			} else if (this.query.participation === 'attending') {
 				filteredMeetups = filteredMeetups.filter(({ attending }) => attending);
 			}
 
-			if (this.search) {
+			if (this.query.search) {
 				const concatMeetupText = ({ title, description, place, organizer }) =>
 					[title, description, place, organizer].join(' ').toLowerCase();
 
 				filteredMeetups = filteredMeetups.filter(meetup => {
 					const concat = concatMeetupText(meetup);
-					return concat.includes(this.search.toLowerCase());
+					return concat.includes(this.query.search.toLowerCase());
 				});
 			}
 

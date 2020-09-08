@@ -36,12 +36,12 @@ const routes = [
 	{
 		path: '/',
 		name: 'main',
-		component: () => import('@/views/PageWithQuery.vue')
+		component: () => import('@/views/MeetupsPage.vue')
 	},
 	{
 		path: '/meetups',
 		name: 'meetups',
-		component: () => import('@/views/PageWithQuery.vue')
+		component: () => import('@/views/MeetupsPage.vue')
 	},
 	{
 		path: '/meetups/create',
