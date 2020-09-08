@@ -36,12 +36,12 @@ const routes = [
 	{
 		path: '/',
 		name: 'main',
-		component: () => import('@/views/MeetupsPage.vue')
+		component: () => import('@/views/Meetups.vue')
 	},
 	{
 		path: '/meetups',
 		name: 'meetups',
-		component: () => import('@/views/MeetupsPage.vue')
+		component: () => import('@/views/Meetups.vue')
 	},
 	{
 		path: '/meetups/create',

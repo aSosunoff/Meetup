@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="filters-panel">
 			<div class="filters-panel__col">
-				<form-check :options="dateFilterOptions" v-model="query.date"></form-check>
+				<FormCheck :options="dateFilterOptions" v-model="query.date"></FormCheck>
 			</div>
 
 			<div class="filters-panel__col">
@@ -19,24 +19,24 @@
 					</InputGroup>
 				</FormGroup>
 				<FormGroup inline>
-					<page-tabs v-model="query.view"></page-tabs>
+					<PageTabs v-model="query.view"></PageTabs>
 				</FormGroup>
 			</div>
 		</div>
 
 		<transition v-if="filteredMeetups && filteredMeetups.length" name="fade" mode="out-in">
-			<meetups-list
+			<MeetupsList
 				v-if="query.view === '' || query.view === 'list'"
 				:meetups="filteredMeetups"
 				key="list"
-			></meetups-list>
-			<meetups-calendar
+			></MeetupsList>
+			<MeetupsCalendar
 				v-else-if="query.view === 'calendar'"
 				:meetups="filteredMeetups"
 				key="calendar"
-			></meetups-calendar>
+			></MeetupsCalendar>
 		</transition>
-		<app-empty v-else>Митапов по заданным условиям не найдено...</app-empty>
+		<AppEmpty v-else>Митапов по заданным условиям не найдено...</AppEmpty>
 	</div>
 </template>
 
