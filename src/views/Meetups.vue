@@ -24,7 +24,7 @@
 			</div>
 		</div>
 
-		<transition v-if="filteredMeetups && filteredMeetups.length" name="fade" mode="out-in">
+		<FadeTransition v-if="filteredMeetups && filteredMeetups.length">
 			<List
 				v-if="query.view === '' || query.view === 'list'"
 				:meetups="filteredMeetups"
@@ -35,7 +35,7 @@
 				:meetups="filteredMeetups"
 				key="calendar"
 			></Calendar>
-		</transition>
+		</FadeTransition>
 		<AppEmpty v-else>Митапов по заданным условиям не найдено...</AppEmpty>
 	</div>
 </template>
@@ -46,6 +46,7 @@ import List from '@/components/Meetups/List/index.vue';
 import Tabs from '@/components/Meetups/Tabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
+import FadeTransition from '@/components/Transition/FadeTransition.vue';
 import FormGroup from '@/components/UI/FormGroup.vue';
 import InputGroup from '@/components/UI/InputGroup.vue';
 import { ImageService, MeetupServise } from '@/utils/helpful';
@@ -157,7 +158,8 @@ export default {
 		FormCheck,
 		AppEmpty,
 		FormGroup,
-		InputGroup
+		InputGroup,
+		FadeTransition
 	}
 };
 </script>
