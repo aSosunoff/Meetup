@@ -19,31 +19,31 @@
 					</InputGroup>
 				</FormGroup>
 				<FormGroup inline>
-					<PageTabs v-model="query.view"></PageTabs>
+					<Tabs v-model="query.view"></Tabs>
 				</FormGroup>
 			</div>
 		</div>
 
 		<transition v-if="filteredMeetups && filteredMeetups.length" name="fade" mode="out-in">
-			<MeetupsList
+			<List
 				v-if="query.view === '' || query.view === 'list'"
 				:meetups="filteredMeetups"
 				key="list"
-			></MeetupsList>
-			<MeetupsCalendar
+			></List>
+			<Calendar
 				v-else-if="query.view === 'calendar'"
 				:meetups="filteredMeetups"
 				key="calendar"
-			></MeetupsCalendar>
+			></Calendar>
 		</transition>
 		<AppEmpty v-else>Митапов по заданным условиям не найдено...</AppEmpty>
 	</div>
 </template>
 
 <script>
-import MeetupsList from '@/components/MeetupsList.vue';
-import MeetupsCalendar from '@/components/MeetupsCalendar.vue';
-import PageTabs from '@/components/PageTabs.vue';
+import List from '@/components/Meetups/List.vue';
+import Calendar from '@/components/Meetups/Calendar.vue';
+import Tabs from '@/components/Meetups/Tabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
 import fetchJson from '@/utils/fetch-json';
@@ -152,9 +152,9 @@ export default {
 	},
 
 	components: {
-		MeetupsList,
-		MeetupsCalendar,
-		PageTabs,
+		List,
+		Calendar,
+		Tabs,
 		FormCheck,
 		AppEmpty,
 		FormGroup,
