@@ -16,6 +16,8 @@ import trash from '@/assets/icons/icon-trash.svg';
 import tv from '@/assets/icons/icon-tv.svg';
 import user from '@/assets/icons/icon-user.svg';
 
+import fetchJson from '@/utils/fetch-json';
+
 export const iconMap = {
 	'alert-circle': alertCircle,
 	'cal-sm': calSm,
@@ -60,6 +62,13 @@ export const ImageService = {
 	 */
 	getImageURL(id) {
 		return id !== null ? `${process.env.VUE_APP_API_URL}/images/${id}` : null;
+	}
+};
+
+export const MeetupServise = {
+	async getMeetupById(id) {
+		const meetup = await fetchJson(`${process.env.VUE_APP_API_URL}/meetups/${id}`);
+		return meetup;
 	}
 };
 

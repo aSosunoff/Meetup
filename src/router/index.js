@@ -46,17 +46,12 @@ const routes = [
 	{
 		path: '/meetups/create',
 		name: 'create',
-		component: () => import('@/views/FormPage.vue'),
-		props: {
-			title: 'Создать митап',
-			submitText: 'Создать',
-			meetup: { date: new Date(), agenda: [] }
-		}
+		component: () => import('@/views/CreatePage.vue')
 	},
 	{
 		path: '/meetups/:meetupId(\\d+)/edit',
 		name: 'edit',
-		component: () => import('@/views/FormPage.vue'),
+		component: () => import('@/views/EditPage.vue'),
 		props: {
 			title: 'Редактирование митапа',
 			submitText: 'Редактировать'
@@ -85,11 +80,6 @@ const routes = [
 				component: () => import('@/views/MeetupAgendaPage.vue')
 			}
 		]
-	},
-	{
-		path: '/form',
-		name: 'form',
-		component: () => import('@/views/FormPage.vue')
 	},
 	{
 		path: '*',

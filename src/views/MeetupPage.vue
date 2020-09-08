@@ -31,8 +31,7 @@ import ContentTabs from '@/components/ContentTabs.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
 import DangerButton from '@/components/buttons/DangerButton.vue';
 import SecondaryButton from '@/components/buttons/SecondaryButton.vue';
-import fetchJson from '@/utils/fetch-json';
-import { ImageService } from '@/utils/helpful';
+import { MeetupServise, ImageService } from '@/utils/helpful';
 
 export default {
 	name: 'MeetupPage',
@@ -48,7 +47,7 @@ export default {
 	},
 
 	beforeRouteEnter(to, from, next) {
-		fetchJson(`${process.env.VUE_APP_API_URL}/meetups/${to.params.meetupId}`).then(meetup => {
+		MeetupServise.getMeetupById(to.params.meetupId).then(meetup => {
 			next(vm => vm.setMeetup(meetup));
 		});
 	},
@@ -57,12 +56,10 @@ export default {
 		if (to.params.meetupId === from.params.meetupId) {
 			next();
 		} else {
-			fetchJson(`${process.env.VUE_APP_API_URL}/meetups/${to.params.meetupId}`).then(
-				meetup => {
-					this.setMeetup(meetup);
-					next();
-				}
-			);
+			MeetupServise.getMeetupById(to.params.meetupId).then(meetup => {
+				this.setMeetup(meetup);
+				next();
+			});
 		}
 	},
 
