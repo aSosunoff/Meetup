@@ -17,6 +17,10 @@ export default {
 		};
 	},
 
+	props: {},
+
+	mounted() {},
+
 	beforeRouteEnter(to, from, next) {
 		MeetupServise.getMeetupById(to.params.meetupId).then(meetup => {
 			next(vm => vm.setMeetup(meetup));
@@ -33,8 +37,6 @@ export default {
 			});
 		}
 	},
-
-	props: {},
 
 	watch: {},
 

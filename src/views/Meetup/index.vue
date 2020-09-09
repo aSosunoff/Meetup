@@ -12,7 +12,10 @@
 				<div class="meetup__aside">
 					<MeetupInfo :meetup="meetup" />
 					<div class="meetup__aside-buttons">
-						<PrimaryButton :to="{ name: 'edit', props: meetup }" tag="router-link">
+						<PrimaryButton
+							:to="{ name: 'edit' }"
+							tag="router-link"
+						>
 							Редактировать
 						</PrimaryButton>
 						<SecondaryButton>Отменить участие</SecondaryButton>
