@@ -67,13 +67,13 @@ const routes = [
 				path: 'description',
 				name: 'meetup-description',
 				props: true,
-				component: () => import('@/views/Meetup/Description.vue')
+				component: () => import('@/views/Meetup/MeetupDescriptionPage.vue')
 			},
 			{
 				path: 'agenda',
 				name: 'meetup-agenda',
 				props: true,
-				component: () => import('@/views/Meetup/Agenda.vue')
+				component: () => import('@/views/Meetup/MeetupAgenda.vue')
 			}
 		]
 	},

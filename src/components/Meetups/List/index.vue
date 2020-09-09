@@ -1,12 +1,16 @@
 <template>
 	<FadeTransitionGroup tag="div" class="meetups-list transition-list">
-		<Item v-for="meetup in meetups" :meetup="meetup" :key="meetup.id"></Item>
+		<MeetupsListItem
+			v-for="meetup in meetups"
+			:meetup="meetup"
+			:key="meetup.id"
+		></MeetupsListItem>
 	</FadeTransitionGroup>
 </template>
 
 <script>
 import FadeTransitionGroup from '@/components/Transition/FadeTransitionGroup.vue';
-import Item from '@/components/Meetups/List/Item.vue';
+import MeetupsListItem from '@/components/Meetups/List/MeetupsListItem.vue';
 
 export default {
 	name: 'MeetupsList',
@@ -19,7 +23,7 @@ export default {
 	},
 
 	components: {
-		Item,
+		MeetupsListItem,
 		FadeTransitionGroup
 	}
 };

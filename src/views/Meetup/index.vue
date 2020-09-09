@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-white">
-		<Cover :title="meetup.title" :link="link" />
+		<MeetupCover :title="meetup.title" :link="link" />
 
 		<div class="container">
 			<div class="meetup">
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Cover from '@/components/Meetup/Cover.vue';
+import MeetupCover from '@/components/Meetup/MeetupCover.vue';
 import MeetupInfo from '@/components/MeetupInfo.vue';
 import ContentTabs from '@/components/ContentTabs.vue';
 import PrimaryButton from '@/components/buttons/PrimaryButton.vue';
@@ -37,7 +37,7 @@ import SecondaryButton from '@/components/buttons/SecondaryButton.vue';
 import { MeetupServise, ImageService } from '@/utils/helpful';
 
 export default {
-	name: 'MeetupPage',
+	name: 'Meetup',
 
 	data() {
 		return {
@@ -84,7 +84,7 @@ export default {
 	},
 
 	components: {
-		Cover,
+		MeetupCover,
 		MeetupInfo,
 		ContentTabs,
 		DangerButton,

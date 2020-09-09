@@ -19,7 +19,7 @@
 					</InputGroup>
 				</FormGroup>
 				<FormGroup inline>
-					<Tabs v-model="query.view"></Tabs>
+					<PageTabs v-model="query.view"></PageTabs>
 				</FormGroup>
 			</div>
 		</div>
@@ -30,20 +30,20 @@
 				:meetups="filteredMeetups"
 				key="list"
 			></List>
-			<Calendar
+			<MeetupsCalendar
 				v-else-if="query.view === 'calendar'"
 				:meetups="filteredMeetups"
 				key="calendar"
-			></Calendar>
+			></MeetupsCalendar>
 		</FadeTransition>
 		<AppEmpty v-else>Митапов по заданным условиям не найдено...</AppEmpty>
 	</div>
 </template>
 
 <script>
-import Calendar from '@/components/Meetups/Calendar.vue';
+import MeetupsCalendar from '@/components/Meetups/MeetupsCalendar.vue';
 import List from '@/components/Meetups/List/index.vue';
-import Tabs from '@/components/Meetups/Tabs.vue';
+import PageTabs from '@/components/Meetups/PageTabs.vue';
 import FormCheck from '@/components/FormCheck.vue';
 import AppEmpty from '@/components/AppEmpty.vue';
 import FadeTransition from '@/components/Transition/FadeTransition.vue';
@@ -59,7 +59,7 @@ const defaults = {
 };
 
 export default {
-	name: 'MeetupsPage',
+	name: 'Meetups',
 
 	props: {},
 
@@ -153,8 +153,8 @@ export default {
 
 	components: {
 		List,
-		Calendar,
-		Tabs,
+		MeetupsCalendar,
+		PageTabs,
 		FormCheck,
 		AppEmpty,
 		FormGroup,

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-	name: 'input-group'
+	name: 'InputGroup'
 };
 </script>
 
